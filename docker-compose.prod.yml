@@ -1,0 +1,56 @@
+# Production overrides — applied on top of docker-compose.yml
+# Usage: docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+version: "3.9"
+
+services:
+
+  backend:
+    # No source code mount in production — use built image
+    volumes: []
+    environment:
+      ENVIRONMENT: production
+      LOG_LEVEL: warning
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2g
+
+  celery-worker:
+    volumes: []
+    command: celery -A app.tasks.celery_app worker --loglevel=warning --concurrency=8 --max-tasks-per-child=1000
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 1g
+
+  celery-beat:
+    volumes:
+      - celery_beat_data:/app/celerybeat-schedule
+
+  frontend:
+    environment:
+      NODE_ENV: production
+
+  postgres:
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 4g
+
+  redis:
+    command: >
+      redis-server
+        --appendonly yes
+        --requirepass ${REDIS_PASSWORD}
+        --maxmemory 512mb
+        --maxmemory-policy allkeys-lru
+
+  # Flower not exposed in production — access via internal VPN or tunnel
+  flower:
+    ports: []
+
+volumes:
+  celery_beat_data:

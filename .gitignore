@@ -1,0 +1,72 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# .gitignore — Stock Financial Analysis Platform
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Secrets & environment ─────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# ── SSL certificates (generated locally) ─────────────────────────────────────
+docker/nginx/ssl/
+
+# ── Docker volumes / local data ───────────────────────────────────────────────
+postgres_data/
+redis_data/
+celerybeat-schedule
+celerybeat.pid
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.sqlite
+*.db
+
+# ── Node / Next.js ────────────────────────────────────────────────────────────
+node_modules/
+.next/
+.turbo/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Coverage / test artifacts ─────────────────────────────────────────────────
+coverage/
+htmlcov/
+.coverage
+*.cover

@@ -4,7 +4,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { stocksApi } from '@/lib/api';
-import type { CompanyProfile, HistoricalPrice, SearchResult, StockDetail, StockQuote } from '@/types/stock';
+import type { HistoricalPrice, SearchResult, StockDetail, StockQuote } from '@/types/stock';
 
 export const stockKeys = {
   all: ['stocks'] as const,

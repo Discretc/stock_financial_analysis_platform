@@ -15,8 +15,6 @@ from app.core.exceptions import (
 )
 from app.schemas.auth import (
     LoginRequest,
-    PasswordResetConfirm,
-    PasswordResetRequest,
     RefreshTokenRequest,
     RegisterRequest,
     TokenResponse,

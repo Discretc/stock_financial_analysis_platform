@@ -63,13 +63,13 @@ class Company(Base):
     )
 
     # Relationships
-    income_statements: Mapped[list["IncomeStatement"]] = relationship(  # type: ignore[name-defined]
+    income_statements: Mapped[list["IncomeStatement"]] = relationship(  # type: ignore[name-defined]  # noqa: F821
         back_populates="company", cascade="all, delete-orphan"
     )
-    balance_sheets: Mapped[list["BalanceSheet"]] = relationship(  # type: ignore[name-defined]
+    balance_sheets: Mapped[list["BalanceSheet"]] = relationship(  # type: ignore[name-defined]  # noqa: F821
         back_populates="company", cascade="all, delete-orphan"
     )
-    cash_flow_statements: Mapped[list["CashFlowStatement"]] = relationship(  # type: ignore[name-defined]
+    cash_flow_statements: Mapped[list["CashFlowStatement"]] = relationship(  # type: ignore[name-defined]  # noqa: F821
         back_populates="company", cascade="all, delete-orphan"
     )
     historical_prices: Mapped[list["HistoricalPrice"]] = relationship(

@@ -12,7 +12,6 @@ from app.core.exceptions import ExternalAPIError
 from app.schemas.financials import (
     BalanceSheetResponse,
     CashFlowStatementResponse,
-    FinancialRatiosSchema,
     IncomeStatementResponse,
 )
 from app.services.financial_service import FinancialService

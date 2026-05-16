@@ -5,7 +5,7 @@
  * Refresh token is stored in an HttpOnly cookie (set by the server).
  */
 
-import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
+import axios, { type AxiosInstance } from 'axios';
 
 const BASE_URL = '/api/v1';
 
@@ -29,6 +29,7 @@ export const apiClient: AxiosInstance = axios.create({
 apiClient.interceptors.request.use((config) => {
   // Access token is stored in Zustand memory store (not localStorage/sessionStorage)
   // Importing here avoids circular dependency
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { useAuthStore } = require('@/store/authStore');
   const accessToken = useAuthStore.getState().accessToken;
   if (accessToken && config.headers) {
@@ -79,6 +80,7 @@ apiClient.interceptors.response.use(
       isRefreshing = true;
 
       try {
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
         const { useAuthStore } = require('@/store/authStore');
         const newAccessToken = await useAuthStore.getState().refreshAccessToken();
         processQueue(null, newAccessToken);
@@ -86,6 +88,7 @@ apiClient.interceptors.response.use(
         return apiClient(originalRequest);
       } catch (refreshError) {
         processQueue(refreshError, null);
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
         const { useAuthStore } = require('@/store/authStore');
         useAuthStore.getState().logout();
         return Promise.reject(refreshError);

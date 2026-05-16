@@ -15,7 +15,7 @@
  * - Toggle between $ millions and % view
  */
 
-import { useState, type ReactNode } from 'react';
+import { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatFinancialValue, formatCommonSize, signColorClass } from '@/utils/formatters';
@@ -62,7 +62,11 @@ export function FinancialTable({
   function toggleCollapse(key: string) {
     setCollapsed((prev) => {
       const next = new Set(prev);
-      next.has(key) ? next.delete(key) : next.add(key);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
       return next;
     });
   }

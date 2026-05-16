@@ -36,7 +36,7 @@ class Watchlist(Base):
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )
 
-    user: Mapped["User"] = relationship(back_populates="watchlists")  # type: ignore[name-defined]
+    user: Mapped["User"] = relationship(back_populates="watchlists")  # type: ignore[name-defined]  # noqa: F821
     items: Mapped[list["WatchlistItem"]] = relationship(back_populates="watchlist", cascade="all, delete-orphan")
 
     __table_args__ = (
@@ -81,7 +81,7 @@ class Portfolio(Base):
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )
 
-    user: Mapped["User"] = relationship(back_populates="portfolios")  # type: ignore[name-defined]
+    user: Mapped["User"] = relationship(back_populates="portfolios")  # type: ignore[name-defined]  # noqa: F821
     holdings: Mapped[list["PortfolioHolding"]] = relationship(back_populates="portfolio", cascade="all, delete-orphan")
 
     __table_args__ = (

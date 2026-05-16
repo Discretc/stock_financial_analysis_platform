@@ -50,7 +50,6 @@ export function StockChart({ ticker, currency = 'USD' }: StockChartProps) {
   }, [prices]);
 
   const strokeColor = isPositive ? '#22c55e' : '#ef4444';
-  const fillColor = isPositive ? 'rgba(34,197,94,0.08)' : 'rgba(239,68,68,0.08)';
 
   const firstClose = prices?.[0]?.close ?? null;
 

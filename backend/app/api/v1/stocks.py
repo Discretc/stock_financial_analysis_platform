@@ -2,13 +2,10 @@
 Stocks API endpoints — search, profile, quote, historical prices.
 """
 
-from typing import Literal
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
-from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi import APIRouter, HTTPException, Query, status
 
-from app.core.database import get_db
-from app.core.exceptions import ExternalAPIError, NotFoundError
+from app.core.exceptions import ExternalAPIError
 from app.schemas.stock import (
     HistoricalPriceResponse,
     StockDetailResponse,

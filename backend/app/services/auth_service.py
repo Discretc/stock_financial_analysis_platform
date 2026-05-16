@@ -3,9 +3,7 @@ Authentication service — registration, login, token management, lockout logic.
 """
 
 import hashlib
-import json
 from datetime import datetime, timedelta, timezone
-from uuid import UUID
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -23,7 +21,6 @@ from app.core.security import (
     create_access_token,
     create_refresh_token,
     decode_token,
-    generate_secure_token,
     hash_password,
     password_needs_rehash,
     verify_password,

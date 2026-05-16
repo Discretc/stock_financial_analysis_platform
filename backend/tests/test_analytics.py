@@ -9,7 +9,6 @@ from app.analytics.common_size import (
     compute_cagr,
     compute_cash_flow_common_size,
     compute_income_statement_common_size,
-    compute_income_statement_yoy,
     compute_yoy_growth,
 )
 

@@ -26,8 +26,12 @@ export function formatFinancialValue(
   if (value == null) return '—';
   const millions = value / 1_000_000;
   const formatted = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,
+    notation: 'compact',
+    compactDisplay: 'short',
   }).format(millions);
   return formatted;
 }

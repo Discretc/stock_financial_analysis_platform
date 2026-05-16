@@ -8,8 +8,6 @@ import uuid
 from datetime import date, datetime
 
 from sqlalchemy import (
-    BigInteger,
-    Boolean,
     Date,
     DateTime,
     Float,
@@ -101,7 +99,7 @@ class IncomeStatement(Base):
 
     fetched_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
-    company: Mapped["Company"] = relationship(back_populates="income_statements")  # type: ignore[name-defined]
+    company: Mapped["Company"] = relationship(back_populates="income_statements")  # type: ignore[name-defined]  # noqa: F821
 
     __table_args__ = (
         UniqueConstraint("company_id", "period", "period_end_date", name="uq_income_stmt_period"),
@@ -181,7 +179,7 @@ class BalanceSheet(Base):
 
     fetched_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
-    company: Mapped["Company"] = relationship(back_populates="balance_sheets")  # type: ignore[name-defined]
+    company: Mapped["Company"] = relationship(back_populates="balance_sheets")  # type: ignore[name-defined]  # noqa: F821
 
     __table_args__ = (
         UniqueConstraint("company_id", "period", "period_end_date", name="uq_balance_sheet_period"),
@@ -249,7 +247,7 @@ class CashFlowStatement(Base):
 
     fetched_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
-    company: Mapped["Company"] = relationship(back_populates="cash_flow_statements")  # type: ignore[name-defined]
+    company: Mapped["Company"] = relationship(back_populates="cash_flow_statements")  # type: ignore[name-defined]  # noqa: F821
 
     __table_args__ = (
         UniqueConstraint("company_id", "period", "period_end_date", name="uq_cashflow_period"),

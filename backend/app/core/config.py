@@ -7,7 +7,7 @@ All secrets must be provided via environment — never hard-coded.
 from functools import lru_cache
 from typing import Literal
 
-from pydantic import AnyHttpUrl, EmailStr, field_validator
+from pydantic import EmailStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 

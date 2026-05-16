@@ -3,9 +3,8 @@ Pydantic v2 schemas — Stocks, Quotes, Historical Prices, Company Profiles.
 """
 
 from datetime import date, datetime
-from uuid import UUID
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 # ---------------------------------------------------------------------------

@@ -8,7 +8,6 @@ from datetime import datetime, timezone
 from sqlalchemy import (
     Boolean,
     DateTime,
-    Enum,
     ForeignKey,
     Integer,
     String,
@@ -83,10 +82,10 @@ class User(Base):
     refresh_tokens: Mapped[list["RefreshToken"]] = relationship(
         back_populates="user", cascade="all, delete-orphan"
     )
-    watchlists: Mapped[list["Watchlist"]] = relationship(  # type: ignore[name-defined]
+    watchlists: Mapped[list["Watchlist"]] = relationship(  # type: ignore[name-defined]  # noqa: F821
         back_populates="user", cascade="all, delete-orphan"
     )
-    portfolios: Mapped[list["Portfolio"]] = relationship(  # type: ignore[name-defined]
+    portfolios: Mapped[list["Portfolio"]] = relationship(  # type: ignore[name-defined]  # noqa: F821
         back_populates="user", cascade="all, delete-orphan"
     )
 

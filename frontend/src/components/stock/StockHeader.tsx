@@ -6,7 +6,6 @@ import { useWebSocket } from '@/hooks/useWebSocket';
 import { useStockDetail } from '@/hooks/useStockData';
 import {
   formatMarketCap,
-  formatPercent,
   formatPrice,
   formatPriceChange,
   formatVolume,

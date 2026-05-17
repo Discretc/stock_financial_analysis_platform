@@ -41,8 +41,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'financialmodelingprep.com',
-        pathname: '/image-stock/**',
+        hostname: 'images.financialmodelingprep.com',
+        pathname: '/symbol/**',
       },
     ],
   },

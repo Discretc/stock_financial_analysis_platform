@@ -213,13 +213,17 @@ class FMPClient:
         )
         return data if isinstance(data, list) else []
 
+    # FMP free plan caps the `limit` parameter at 5 for financial statement endpoints.
+    # Sending limit > 5 returns a premium error (not JSON), which results in an empty list.
+    _FMP_FREE_LIMIT = 5
+
     async def get_income_statement(
         self, ticker: str, period: str = "annual", limit: int = 10
     ) -> list[dict]:
         """Income statement — uses FMP stable API (/stable/income-statement?symbol=)."""
         return await self._request(
             "/income-statement",
-            params={"symbol": ticker.upper(), "period": period, "limit": limit},
+            params={"symbol": ticker.upper(), "period": period, "limit": min(limit, self._FMP_FREE_LIMIT)},
             cache_ttl=settings.CACHE_TTL_FINANCIAL_STATEMENTS,
             stable=True,
         ) or []
@@ -230,7 +234,7 @@ class FMPClient:
         """Balance sheet — uses FMP stable API (/stable/balance-sheet-statement?symbol=)."""
         return await self._request(
             "/balance-sheet-statement",
-            params={"symbol": ticker.upper(), "period": period, "limit": limit},
+            params={"symbol": ticker.upper(), "period": period, "limit": min(limit, self._FMP_FREE_LIMIT)},
             cache_ttl=settings.CACHE_TTL_FINANCIAL_STATEMENTS,
             stable=True,
         ) or []
@@ -241,7 +245,7 @@ class FMPClient:
         """Cash flow statement — uses FMP stable API (/stable/cash-flow-statement?symbol=)."""
         return await self._request(
             "/cash-flow-statement",
-            params={"symbol": ticker.upper(), "period": period, "limit": limit},
+            params={"symbol": ticker.upper(), "period": period, "limit": min(limit, self._FMP_FREE_LIMIT)},
             cache_ttl=settings.CACHE_TTL_FINANCIAL_STATEMENTS,
             stable=True,
         ) or []

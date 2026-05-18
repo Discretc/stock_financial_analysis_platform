@@ -19,7 +19,7 @@ function buildRows(statements: CashFlowStatement[]): FinancialRow[] {
     { key: 'sbc', label: 'Stock-Based Compensation', level: 1, values: v('stock_based_compensation'), csValues: cs('cs_sbc_pct'), positiveIsGood: false },
     { key: 'wc', label: 'Change in Working Capital', level: 1, values: v('change_in_working_capital'), csValues: cs('cs_working_capital_pct'), positiveIsGood: true },
     { key: 'other_op', label: 'Other Operating Activities', level: 1, values: v('other_operating_activities'), positiveIsGood: true },
-    { key: 'ocf', label: 'Net Cash from Operations (OCF)', level: 0, values: v('net_cash_from_operating'), positiveIsGood: true },
+    { key: 'ocf', label: 'Net Cash from Operations (OCF)', level: 0, values: v('net_cash_from_operating'), csValues: statements.map(() => 100), positiveIsGood: true },
     // Investing
     { key: 'inv_header', label: 'INVESTING ACTIVITIES', level: 0, isHeader: true, childKeys: ['capex', 'acquisitions', 'other_inv', 'net_inv'], values: statements.map(() => null) },
     { key: 'capex', label: 'Capital Expenditures', level: 1, values: v('capital_expenditures'), csValues: cs('cs_capex_pct'), positiveIsGood: false },

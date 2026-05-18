@@ -23,7 +23,7 @@ function buildRows(statements: BalanceSheet[]): FinancialRow[] {
     { key: 'goodwill', label: 'Goodwill', level: 1, values: v('goodwill'), csValues: cs('cs_goodwill_pct'), positiveIsGood: true },
     { key: 'intangibles', label: 'Intangible Assets', level: 1, values: v('intangible_assets'), positiveIsGood: true },
     { key: 'other_nca', label: 'Other Non-Current Assets', level: 1, values: v('other_non_current_assets'), positiveIsGood: true },
-    { key: 'total_assets', label: 'Total Assets', level: 0, isHeader: false, values: v('total_assets'), positiveIsGood: true },
+    { key: 'total_assets', label: 'Total Assets', level: 0, isHeader: false, values: v('total_assets'), csValues: statements.map(() => 100), positiveIsGood: true },
     // LIABILITIES
     { key: 'liab_header', label: 'LIABILITIES', level: 0, isHeader: true, childKeys: ['ap', 'std', 'total_cl', 'ltd', 'total_ncl', 'total_liab'], values: statements.map(() => null) },
     { key: 'ap', label: 'Accounts Payable', level: 1, values: v('accounts_payable'), positiveIsGood: false },

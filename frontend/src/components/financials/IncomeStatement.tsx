@@ -24,6 +24,7 @@ function buildRows(statements: IncomeStatement[]): FinancialRow[] {
       level: 0,
       isHeader: false,
       values: v('revenue'),
+      csValues: statements.map(() => 100),
       positiveIsGood: true,
     },
     {

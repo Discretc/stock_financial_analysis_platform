@@ -32,6 +32,16 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="w-full max-w-sm space-y-6">
+        <button
+          onClick={() => router.back()}
+          className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5"/><path d="m12 5-7 7 7 7"/>
+          </svg>
+          Back
+        </button>
+
         <div className="text-center">
           <h1 className="text-2xl font-bold text-foreground">Sign in</h1>
           <p className="text-sm text-muted-foreground mt-1">Access your financial analytics platform</p>
